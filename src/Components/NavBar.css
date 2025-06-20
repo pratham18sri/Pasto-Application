@@ -1,0 +1,30 @@
+/* NavBar.css */
+
+.navbar {
+  display: flex;
+
+  padding: 12px 24px;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #3730a3;
+  color: white;
+}
+
+.nav-link.active {
+  background-color: white;
+  color: #4f46e5;
+  font-weight: 700;
+}

@@ -1,0 +1,126 @@
+/* Container holding the entire pastes list */
+.pastes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+}
+
+/* Search input */
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 0 auto 20px;
+  display: block;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 6px rgba(79, 70, 229, 0.3);
+}
+
+/* Individual paste card */
+.paste-card {
+  background-color: #292828;
+  border: 1.5px solid #000000;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s ease;
+}
+
+.paste-card:hover {
+  box-shadow: 0 2px 16px rgb(29, 155, 180);
+}
+
+/* Title */
+.paste-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  
+  line-break:  anywhere;
+}
+
+/* Content area */
+.paste-text-container {
+  margin-bottom: 12px;
+}
+
+.paste-content {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #b0aeae;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+/* Read More button */
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 4px 0;
+  margin-top: 4px;
+}
+
+.read-more-btn:hover {
+  text-decoration: underline;
+}
+
+/* Action buttons */
+.paste-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.paste-actions button {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.paste-actions button:hover {
+  background-color: #3730a3;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .paste-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .paste-actions button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pastes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .paste-card {
+    margin: 0;
+  }
+}
