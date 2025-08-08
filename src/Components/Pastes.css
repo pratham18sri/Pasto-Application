@@ -1,21 +1,9 @@
-:root {
-  --light-bg: #f9fafb;
-  --light-card: #ffffff;
-  --light-text: #1f2937;
-  --light-border: #e5e7eb;
-  --dark-bg: #121212;
-  --dark-card: #1e1e1e;
-  --dark-text: #e5e7eb;
-  --dark-border: #374151;
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --success: #10b981;
-  --error: #ef4444;
-}
-
+/* Pastes.css */
 .pastes-container {
-  padding: 2rem;
+  padding: 2rem 1rem;
   min-height: calc(100vh - 4rem);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .search-container {
@@ -28,15 +16,18 @@
   width: 100%;
   padding: 0.75rem 1rem;
   padding-right: 2.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--light-border);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
   font-size: 1rem;
+  color: var(--text);
+  background-color: var(--card-bg);
+  transition: var(--transition);
 }
 
-.dark-theme .search-input {
-  background-color: var(--dark-card);
-  color: var(--dark-text);
-  border-color: var(--dark-border);
+.search-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .clear-search {
@@ -48,7 +39,12 @@
   border: none;
   font-size: 1.25rem;
   cursor: pointer;
-  color: #6b7280;
+  color: var(--text-light);
+  transition: var(--transition);
+}
+
+.clear-search:hover {
+  color: var(--text);
 }
 
 .pastes-grid {
@@ -59,28 +55,35 @@
 
 .paste-card {
   padding: 1.5rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-md);
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.light-theme .paste-card {
-  background-color: var(--light-card);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.dark-theme .paste-card {
-  background-color: var(--dark-card);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+.paste-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .paste-title {
-  margin-bottom: 1rem;
   color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 600;
   word-break: break-word;
+  margin: 0;
+}
+
+.paste-meta {
+  font-size: 0.8rem;
+  color: var(--text-light);
 }
 
 .paste-content-container {
-  margin-bottom: 1rem;
+  flex-grow: 1;
 }
 
 .paste-content {
@@ -89,6 +92,9 @@
   max-height: 200px;
   overflow: hidden;
   transition: max-height 0.3s ease;
+  font-family: inherit;
+  margin: 0;
+  color: var(--text);
 }
 
 .paste-content.expanded {
@@ -102,6 +108,12 @@
   cursor: pointer;
   padding: 0.25rem 0;
   font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.read-more-btn:hover {
+  text-decoration: underline;
 }
 
 .paste-actions {
@@ -113,10 +125,11 @@
 .action-btn {
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  transition: var(--transition);
 }
 
 .edit-btn {
@@ -124,9 +137,17 @@
   color: var(--primary);
 }
 
+.edit-btn:hover {
+  background-color: rgba(99, 102, 241, 0.2);
+}
+
 .copy-btn {
   background-color: rgba(16, 185, 129, 0.1);
   color: var(--success);
+}
+
+.copy-btn:hover {
+  background-color: rgba(16, 185, 129, 0.2);
 }
 
 .copy-btn.copied {
@@ -139,30 +160,32 @@
   color: var(--error);
 }
 
+.delete-btn:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
 .empty-state {
   text-align: center;
   padding: 2rem;
-  color: #6b7280;
+  color: var(--text-light);
+  font-size: 1.1rem;
 }
 
-.dark-theme .empty-state {
-  color: #9ca3af;
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .pastes-container {
     padding: 1.5rem;
   }
   
   .pastes-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .pastes-container {
     padding: 1rem;
-  min-height: calc(100vh - 3rem);
   }
   
   .paste-actions {
