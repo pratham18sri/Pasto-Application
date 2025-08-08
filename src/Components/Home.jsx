@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './Home.css';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToPastes, updateToPastes } from '../redux/pasteslice.js';
+import { ThemeContext } from '../context/ThemeContext';
+import './Home.css';
 
 const Home = () => {
+  const { theme } = useContext(ThemeContext);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [error, setError] = useState('');
@@ -62,7 +64,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home-container">
+    <div className="home-container" data-theme={theme}>
       <div className="paste-card">
         <h1 className="paste-title">{pasteId ? "Edit Your Paste" : "Create New Paste"}</h1>
         
