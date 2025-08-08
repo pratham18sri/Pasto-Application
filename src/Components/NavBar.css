@@ -1,19 +1,14 @@
+/* NavBar.css */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  transition: all 0.3s ease;
-}
-
-.navbar.light {
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.navbar.dark {
-  background-color: #1a1a1a;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-links {
@@ -25,40 +20,25 @@
   text-decoration: none;
   font-weight: 600;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  color: var(--text-light);
 }
 
-.nav-link.light {
-  color: #4b5563;
+.nav-link:hover {
+  color: var(--primary);
+  background-color: rgba(99, 102, 241, 0.1);
 }
 
-.nav-link.dark {
-  color: #e5e7eb;
-}
-
-.nav-link.light:hover {
-  background-color: #f3f4f6;
-}
-
-.nav-link.dark:hover {
-  background-color: #2d2d2d;
-}
-
-.nav-link.light.active {
-  background-color: #6366f1;
+.nav-link.active {
+  background-color: var(--primary);
   color: white;
-}
-
-.nav-link.dark.active {
-  background-color: #818cf8;
-  color: #111827;
 }
 
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .theme-toggle {
@@ -68,21 +48,21 @@
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle.light {
-  color: #4b5563;
-}
-
-.theme-toggle.dark {
-  color: #e5e7eb;
+  transition: var(--transition);
+  color: var(--text);
 }
 
 .theme-toggle:hover {
   transform: scale(1.1);
+  color: var(--primary);
 }
 
+.nav-auth {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -93,6 +73,7 @@
   .nav-links {
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
   }
   
   .nav-right {
@@ -109,5 +90,9 @@
   .nav-link {
     padding: 0.5rem;
     font-size: 0.9rem;
+  }
+  
+  .nav-right {
+    gap: 1rem;
   }
 }
