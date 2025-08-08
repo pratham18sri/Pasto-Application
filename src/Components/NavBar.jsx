@@ -9,17 +9,17 @@ const NavBar = () => {
   });
 
   useEffect(() => {
-    document.body.className = darkMode ? 'dark-theme' : 'light-theme';
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
   return (
-    <div className={`navbar ${darkMode ? 'dark' : 'light'}`}>
+    <nav className="navbar">
       <div className="nav-links">
         <NavLink
           to='/home'
           className={({ isActive }) => 
-            `nav-link ${isActive ? 'active' : ''} ${darkMode ? 'dark' : 'light'}`
+            `nav-link ${isActive ? 'active' : ''}`
           }
         >
           Home
@@ -27,7 +27,7 @@ const NavBar = () => {
         <NavLink
           to='/pastes'
           className={({ isActive }) => 
-            `nav-link ${isActive ? 'active' : ''} ${darkMode ? 'dark' : 'light'}`
+            `nav-link ${isActive ? 'active' : ''}`
           }
         >
           Pastes
@@ -37,7 +37,8 @@ const NavBar = () => {
       <div className="nav-right">
         <button 
           onClick={() => setDarkMode(!darkMode)}
-          className={`theme-toggle ${darkMode ? 'dark' : 'light'}`}
+          className="theme-toggle"
+          aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
         >
           {darkMode ? '☀️' : '🌙'}
         </button>
@@ -51,7 +52,7 @@ const NavBar = () => {
           </SignedOut>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
